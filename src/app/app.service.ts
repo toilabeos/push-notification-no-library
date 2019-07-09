@@ -45,9 +45,11 @@ export class AppService {
         });
       };
       _notify.onclick = function (e) {
+        e.preventDefault();
+        window.open('/open', '_blank');
         return obs.next({
           notification: _notify,
-          event: e
+          event: e,
         });
       };
       _notify.onerror = function (e) {
@@ -67,7 +69,7 @@ export class AppService {
     source.forEach((item) => {
       let options = {
         body: item.alertContent,
-        icon: "https://i.ytimg.com/vi/wmnkAOO6Qo4/sddefault.jpg#404_is_fine",
+        icon: "https://i.ytimg.com/vi/wmnkAOO6Qo4/sddefault.jpg#404_is_fine"
       };
       let notify = self.create(item.title, options).subscribe();
     })
